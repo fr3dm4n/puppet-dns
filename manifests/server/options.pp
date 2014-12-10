@@ -23,6 +23,7 @@ define dns::server::options(
   $check_names_response = undef,
   $allow_query = [],
   $no_dns_sec = false,
+  $no_empty_zones = false,
 ) {
   $valid_check_names = ['fail', 'warn', 'ignore']
 

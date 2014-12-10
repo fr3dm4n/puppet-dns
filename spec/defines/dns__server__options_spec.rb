@@ -110,7 +110,7 @@ describe 'dns::server::options', :type => :define do
     it { should contain_file('/etc/bind/named.conf.options').with_content(/8\.8\.8\.8;/)  }
     it { should contain_file('/etc/bind/named.conf.options').with_content(/allow-query/)  }
 
-  end
+  end 
   context 'disable dns-sec option' do
     let :params do
       { :no_dns_sec => true }
@@ -121,6 +121,13 @@ describe 'dns::server::options', :type => :define do
     it { should contain_file('/etc/bind/named.conf.options').with_content(/dnssec-enable no;/)  }
 
   end
+  context 'with not empty zone generation' do
+    let :params do
+      { :no_empty_zones => true }
+    end
 
+    it { should contain_file('/etc/bind/named.conf.options').with_content(/empty-zones-enable no/)  }
+
+  end
 end
 
